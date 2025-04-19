@@ -13,8 +13,6 @@ class CategoryListAPIView(APIView):
         serializer = CategoryEquipmentSerializer(categories, many=True)
         return Response(serializer.data)
 
-
-
 from rest_framework.generics import ListAPIView
 
 class EquipmentByCategoryAPIView(ListAPIView):

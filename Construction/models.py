@@ -1,5 +1,6 @@
 from django.db import models
 from user.models import CustomUser
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class CategoryConstruction(models.Model):
@@ -15,6 +16,12 @@ class Construction(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='construction_imeges/')
     category = models.ForeignKey(CategoryConstruction, on_delete=models.CASCADE)
+    rating = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)],
+        null=True, blank=True,
+        help_text="قيم من 1 إلى 5 نجوم"
+    )
+
 
 
 

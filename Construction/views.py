@@ -2,11 +2,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response 
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
-
 from .models import Construction ,CategoryConstruction
 from .serializers import ConstructionSerializer ,CategoryConstructionSerializer 
-
-
+from rest_framework.generics import ListAPIView
 
 class CategoryListAPIView(APIView):
     def get(self, request):
@@ -14,14 +12,9 @@ class CategoryListAPIView(APIView):
         serializer = CategoryConstructionSerializer(categories, many=True)
         return Response(serializer.data)
     
-
-
-from rest_framework.generics import ListAPIView
-
 class ConstructionListAPIView(ListAPIView):
     queryset = Construction.objects.all()
     serializer_class = ConstructionSerializer
-
 
 class ConstructionCreateAPIView(APIView):
     permission_classes = [IsAuthenticated]

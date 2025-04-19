@@ -22,7 +22,7 @@ class RegisterView(APIView):
                 'last_name': user.last_name,
                 'profile_image': user.profile_image.url if user.profile_image else None,
                 'token': token.key,  
-                'message': 'User created successfully 🎉'
+                'message': 'User created successfully'
             }
 
             if user.user_type == 'worker':
@@ -55,7 +55,7 @@ from django.templatetags.static import static
 
 class SpecializationsView(APIView):
     def get(self, request):
-        # Creating a dictionary of specializations with icons
+        
         specialization_icons = {
             'plumbing': static('icons/icon-2.svg'),
             'carpentry': static('icons/icon-1.svg'),
@@ -68,12 +68,12 @@ class SpecializationsView(APIView):
             'Ceramic': static('icons/icon-9.svg'),
         }
 
-        # Preparing the data by adding icons
+  
         data = [
             {
                 'key': key,
                 'name': name,
-                'icon': specialization_icons.get(key, static('icons/default-icon.svg'))  # Provide default icon if not found
+                'icon': specialization_icons.get(key, static('icons/default-icon.svg'))  
             }
             for key, name in WORKER_SPECIALIZATIONS
         ]
@@ -81,7 +81,7 @@ class SpecializationsView(APIView):
         return Response(data)
 class WorkerListView(APIView):
     def get(self, request):
-        specialization = request.query_params.get('specialization')  # مثلاً 'plumbing'
+        specialization = request.query_params.get('specialization')  
         workers = CustomUser.objects.filter(user_type='worker')
 
         if specialization:

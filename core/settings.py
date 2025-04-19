@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-sec5o^$flh9i2-9nacj*o2ljwsnzw&gq9a&a-#x!kweukb@(n('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['sara545.pythonanywhere.com', 'localhost', '127.0.0.1']
 
 
@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-     'corsheaders',
+    'corsheaders',
     'user',
     'rest_framework',
     'rest_framework.authtoken',
@@ -140,12 +140,12 @@ import os
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 STATIC_URL = '/static/'
 
-# إضافة لو مش موجودة
+ 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-# مكان تجميع ملفات الستاتيك
+ 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
